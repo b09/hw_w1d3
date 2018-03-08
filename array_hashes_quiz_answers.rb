@@ -19,7 +19,10 @@ stops = [ "Croy", "Cumbernauld", "Falkirk High", "Linlithgow", "Livingston", "Ha
 
   # 3. Add `"Polmont"` at the appropriate point (between `"Falkirk High"` and `"Linlithgow"`)
 
-  stops[3] = "Falkirk High"
+  stops.insert(3, "Polmont")
+
+  #stops[3] = "Falkirk High"
+  # above wrong because i lose what is on place three
 
 
 
@@ -39,6 +42,8 @@ stops = [ "Croy", "Cumbernauld", "Falkirk High", "Linlithgow", "Livingston", "Ha
 
   stops.delete_at(1)
 
+  #stops.delete_at(stops.index("Cumberland"))
+  # both work, the latter is from homework review
 
 
   # 7. How many stops there are in the array?
@@ -62,6 +67,10 @@ stops = [ "Croy", "Cumbernauld", "Falkirk High", "Linlithgow", "Livingston", "Ha
   # 10. Print out all the stops using a for loop
 
   stops.each { |s| puts s }
+
+  # for stop in stops
+  #   p stop
+  # end
 
 
 
@@ -130,6 +139,10 @@ users = {
 
   users["Erik"][:favourite_numbers].min
 
+  # the #3, which is almost the same, could be made
+  # into a variable, and the variable could be
+  # called to use with .min
+
 
 
   # 6. Add the number `7` to Erik's favourite numbers
@@ -140,9 +153,55 @@ users = {
 
   # 7. Change Erik's hometown to Edinburgh
 
-  
+  users["Erik"][:home_town] = "Edinburgh"
 
 
 
   # 8. Add a pet dog to Erik called "Fluffy"
+
+  users["Erik"][:pets]["Fluffy"] = :dog
+
+
+
   # 9. Add yourself to the users hash
+
+  users["NewUser"]
+
+
+
+
+
+    # 1. Change the capital of Wales from `"Swansea"` to `"Cardiff"`.
+
+    for country in united_kingdom
+      if country[:capital] == "Swansea"
+        country[:capital] = "Cardiff"
+      end
+    end
+
+
+    # 2. Create a Hash for Northern Ireland and add it to the `united_kingdom` array (The capital is Belfast, and the population is 1,811,000).
+
+    ni = {
+      name: "N Ireland",
+      population: 1,811,000,
+      capital: "Belfast"
+    }
+    united_kingdom.push(ni)
+
+
+    # 3. Use a loop to print the names of all the countries in the UK.
+
+    for country in united_kingdom
+      puts country[:name]
+    end
+
+
+
+    # 4. Use a loop to find the total population of the UK.
+
+    population = 0
+
+    for country in united_kingdom
+      population += country[:population]
+    end
